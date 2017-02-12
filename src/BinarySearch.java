@@ -8,11 +8,11 @@ import java.io.InputStreamReader;
 
 public class BinarySearch {
     public static int applySearch (int key, int[] array) {
-        int middleElementIndex = array[array.length / 2];
         int lowerSearchBorder = 0;
         int upperSearchBorder = array.length - 1;
 
         while (lowerSearchBorder < upperSearchBorder) {
+            int middleElementIndex = lowerSearchBorder + ((upperSearchBorder - lowerSearchBorder) / 2);
             if (array[middleElementIndex] == key) {
                 return array[middleElementIndex];
             }
@@ -45,10 +45,14 @@ public class BinarySearch {
 
         printArray(numbers);
 
-        String elementToFind = inputElement();
+        int elementToFind = inputElement();
 
-//        int elementIndex = applySearch(elementToFind, numbers);
-//
+//        System.out.println(elementToFind);
+
+        int elementIndex = applySearch(elementToFind, numbers);
+
+        System.out.println(elementIndex);
+
 //        if (elementIndex == -1) {
 //            System.out.println("Element not found");
 //        } else {
@@ -57,19 +61,17 @@ public class BinarySearch {
 
     }
 
-    public static String inputElement() {
+    public static int inputElement() {
         Scanner scanner = new Scanner(System.in);
-        String elementToFind = "";
-
-        System.out.println("Please, input the integer element: ");
         String input = null;
         int number = 0;
+        System.out.println("Please, input the integer element: ");
+
         try {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
             try {
                 input = bufferedReader.readLine();
                 number = Integer.parseInt(input);
-                System.out.println(number);
             } catch (IOException error) {
                 System.out.println(error);
             }
@@ -78,8 +80,6 @@ public class BinarySearch {
             System.out.println("Not a number !");
         }
 
-
-
-        return elementToFind.equals("-1") ? elementToFind : "0";
+        return number;
     }
 }
