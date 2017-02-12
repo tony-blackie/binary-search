@@ -11,11 +11,8 @@ public class BinarySearch {
         int lowerSearchBorder = 0;
         int upperSearchBorder = array.length - 1;
 
-        while (lowerSearchBorder < upperSearchBorder) {
+        while (lowerSearchBorder <= upperSearchBorder) {
             int middleElementIndex = lowerSearchBorder + ((upperSearchBorder - lowerSearchBorder) / 2);
-            if (array[middleElementIndex] == key) {
-                return array[middleElementIndex];
-            }
 
             if (key < array[middleElementIndex]) {
                 upperSearchBorder = middleElementIndex - 1;
@@ -23,6 +20,10 @@ public class BinarySearch {
 
             if (key > array[middleElementIndex]) {
                 lowerSearchBorder = middleElementIndex + 1;
+            }
+
+            if (array[middleElementIndex] == key) {
+                return middleElementIndex;
             }
         }
 
@@ -47,17 +48,13 @@ public class BinarySearch {
 
         int elementToFind = inputElement();
 
-//        System.out.println(elementToFind);
-
         int elementIndex = applySearch(elementToFind, numbers);
 
-        System.out.println(elementIndex);
-
-//        if (elementIndex == -1) {
-//            System.out.println("Element not found");
-//        } else {
-//            System.out.println("Index of your element is: " + elementIndex);
-//        }
+        if (elementIndex == -1) {
+            System.out.println("Element not found");
+        } else {
+            System.out.println("Index of your element is: " + elementIndex);
+        }
 
     }
 
