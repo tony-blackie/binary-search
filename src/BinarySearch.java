@@ -1,5 +1,10 @@
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.InputMismatchException;
+import java.lang.Integer;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class BinarySearch {
     public static int applySearch (int key, int[] array) {
@@ -31,7 +36,7 @@ public class BinarySearch {
         System.out.println();
     }
 
-    public static void main  (String args[]) {
+    public static void main (String args[]) {
         int[] numbers = new int[] {5, 3, 12, 9, 15, 18, 22, 12, 76, 45, 33, 11, 31, 14, 4, 18, 2};
 
         printArray(numbers);
@@ -40,8 +45,41 @@ public class BinarySearch {
 
         printArray(numbers);
 
-//        Scanner scanner = new Scanner(System.in);
+        String elementToFind = inputElement();
+
+//        int elementIndex = applySearch(elementToFind, numbers);
 //
-//        String
+//        if (elementIndex == -1) {
+//            System.out.println("Element not found");
+//        } else {
+//            System.out.println("Index of your element is: " + elementIndex);
+//        }
+
+    }
+
+    public static String inputElement() {
+        Scanner scanner = new Scanner(System.in);
+        String elementToFind = "";
+
+        System.out.println("Please, input the integer element: ");
+        String input = null;
+        int number = 0;
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+            try {
+                input = bufferedReader.readLine();
+                number = Integer.parseInt(input);
+                System.out.println(number);
+            } catch (IOException error) {
+                System.out.println(error);
+            }
+
+        } catch (NumberFormatException ex) {
+            System.out.println("Not a number !");
+        }
+
+
+
+        return elementToFind.equals("-1") ? elementToFind : "0";
     }
 }
